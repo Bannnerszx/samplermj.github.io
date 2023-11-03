@@ -30,18 +30,21 @@ const firebaseConfig = {
   appId: "1:566240852343:web:b5ad204075a40a03ae8972",
   measurementId: "G-WS70BNTXRN"
 };
+const firebaseConfigExtension = {
+  // Replace with your project 2 configuration
+  apiKey: REACT_NATIVE_FIREBASE_EXTENSION_API_KEY,
+  authDomain: REACT_NATIVE_FIREBASE_EXTENSION_AUTH_DOMAIN,
+  projectId: REACT_NATIVE_FIREBASE_EXTENSION_PROJECT_ID,
+  storageBucket: REACT_NATIVE_FIREBASE_EXTENSION_STORAGE_BUCKET,
+  messagingSenderId: REACT_NATIVE_FIREBASE_EXTENSION_MESSAGING_SENDER_ID,
+  appId: REACT_NATIVE_FIREBASE_EXTENSION_APP_ID,
+  measurementId: REACT_NATIVE_FIREBASE_EXTENSION_MEASUREMENT_ID,
 
+
+};
 
 //Second firebase
-const firebaseConfigExtension = {
-    apiKey: "AIzaSyDwjLbUFMDEyXB7NT63QJonc1NXZH3w07k",
-    authDomain: "samplermj.firebaseapp.com",
-    projectId: "samplermj",
-    storageBucket: "samplermj.appspot.com",
-    messagingSenderId: "879567069316",
-    appId: "1:879567069316:web:1208cd45c8b20ca6aba2d1",
-    measurementId: "G-L80RXVVXY6"
-};
+
 
 export const projectExtensionFirebase = initializeApp(firebaseConfigExtension, 'projectExtension');
 export const projectExtensionAuth = getAuth(projectExtensionFirebase);
