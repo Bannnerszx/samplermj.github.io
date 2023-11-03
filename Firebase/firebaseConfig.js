@@ -3,6 +3,15 @@ import { getAuth, sendEmailVerification, fetchSignInMethodsForEmail, signInWithE
 import { getFirestore, collection, addDoc, doc, setDoc, getDoc, getDocs, query, orderBy , limit, updateDoc, where } from 'firebase/firestore';
 import { getStorage, uploadBytes, put, getDownloadURL, listAll} from 'firebase/storage'
 import { getDatabase, ref, push } from 'firebase/database';
+import {
+  REACT_NATIVE_FIREBASE_EXTENSION_API_KEY,
+  REACT_NATIVE_FIREBASE_EXTENSION_AUTH_DOMAIN,
+  REACT_NATIVE_FIREBASE_EXTENSION_PROJECT_ID,
+  REACT_NATIVE_FIREBASE_EXTENSION_STORAGE_BUCKET,
+  REACT_NATIVE_FIREBASE_EXTENSION_MESSAGING_SENDER_ID,
+  REACT_NATIVE_FIREBASE_EXTENSION_APP_ID,
+  REACT_NATIVE_FIREBASE_EXTENSION_MEASUREMENT_ID
+} from '@env';
 
 // Optionally import the services that you want to use
 // import {...} from "firebase/auth";
