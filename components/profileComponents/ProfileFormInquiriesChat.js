@@ -7,7 +7,7 @@ import { AuthContext } from '../../context/AuthProvider';
 import { useParams } from 'react-router-dom';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { BrowserRouter, Route, useNavigate, Link, useHistory } from 'react-router-dom';
-import car1 from '../../assets/car1.JPG';
+
 import ProgressStepper from '../ProgressStepper';
 
 const ChatD = () => {

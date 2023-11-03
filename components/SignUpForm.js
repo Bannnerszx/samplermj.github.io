@@ -6,9 +6,8 @@ import { Octicons, Ionicons, AntDesign, Feather, Entypo, FontAwesome, FontAwesom
 // import { Checkbox } from 'react-native-paper';
 import { Country, State, City } from 'country-state-city';
 import Select from 'react-select';
-import '../assets/style.css';
+
 import PhoneInput from 'react-phone-input-2'
-import 'react-phone-input-2/lib/style.css'
 // import { setStatusBarTranslucent } from 'expo-status-bar';
 import { onAuthStateChanged, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, getAuth, sendEmailVerification } from 'firebase/auth';
 import { auth, db, addDoc, collection, doc, setDoc, getDoc, fetchSignInMethodsForEmail, projectExtensionAuth, projectExtensionFirestore } from '../Firebase/firebaseConfig';
@@ -17,7 +16,7 @@ import { Button, NativeBaseProvider, Alert, Input, Icon, Pressable, extendTheme,
 import { Navigate, useNavigate } from 'react-router-dom';
 import { MaterialIcons } from "@expo/vector-icons";
 import { AuthContext, AuthProvider } from '../context/AuthProvider';
-import logo4 from '../assets/RMJ logo for flag transparent.png';
+
 
 
 const styles = StyleSheet.create({

@@ -7,7 +7,6 @@ import { AuthContext } from '../../context/AuthProvider';
 import { useParams } from 'react-router-dom';
 import { getStorage, listAll, getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { BrowserRouter, Route, useNavigate, Link, useHistory } from 'react-router-dom';
-import car1 from '../../assets/car1.JPG';
 import ProgressStepper from '../ProgressStepper';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';

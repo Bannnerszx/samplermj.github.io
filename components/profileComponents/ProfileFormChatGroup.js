@@ -7,12 +7,12 @@ import { AuthContext } from '../../context/AuthProvider';
 import { useParams } from 'react-router-dom';
 import { getStorage, listAll, getDownloadURL, ref } from "firebase/storage";
 import { BrowserRouter, Route, useNavigate, Link, useHistory } from 'react-router-dom';
-import car1 from '../../assets/car1.JPG';
+
 import ProgressStepper from '../ProgressStepper';
 import { Country, City } from 'country-state-city';
 import { Calendar } from 'react-native-calendars';
 import ViewInvoice from './ViewInvoice';
-import orderInvoice from '../../assets/ORDER INVOICE PDF.png';
+
 import ViewOrderInvoice from './ViewOrderInvoice';
 
 const ChatD = ({ selectedChatId }) => {
