@@ -4,7 +4,7 @@
   "main": "node_modules/expo/AppEntry.js",
   "homepage": "https://bannnerszx.github.io/samplermj.github.io/",
    "predeploy": "npm run build",
-+ "deploy": "gh-pages -d build",
+  "deploy": "gh-pages -d build",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
