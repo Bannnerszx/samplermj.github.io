@@ -2,7 +2,7 @@
   "name": "sampleforms",
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
-  "homepage": "https://bannnerszx.github.io/samplermj.github.io/",
+  "homepage": "https://bannnerszx.github.io/samplermj.github.io",
   "scripts": {
     "android": "expo start --android",
     "ios": "expo start --ios",
