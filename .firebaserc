@@ -1,0 +1,13 @@
+{
+  "projects": {
+    "default": "samplermj"
+  },
+  "targets": {},
+  "etags": {
+    "samplermj": {
+      "extensionInstances": {
+        "firestore-send-email": "08e018dff6442802874fde1acca7f4de2850c1906e7cd1666a76dec16954561e"
+      }
+    }
+  }
+}

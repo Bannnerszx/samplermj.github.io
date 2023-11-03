@@ -1,0 +1,277 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "VehicleProducts",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "carName",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "dateAdded",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "VehicleProducts",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "carName",
+          "arrayConfig": "CONTAINS"
+        },
+        {
+          "fieldPath": "carName",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "dateAdded",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "VehicleProducts",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "carName",
+          "arrayConfig": "CONTAINS"
+        },
+        {
+          "fieldPath": "dateAdded",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "VehicleProducts",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "chassisNumber",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "dateAdded",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "VehicleProducts",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "chassisNumber",
+          "arrayConfig": "CONTAINS"
+        },
+        {
+          "fieldPath": "chassisNumber",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "dateAdded",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "VehicleProducts",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "keywords",
+          "arrayConfig": "CONTAINS"
+        },
+        {
+          "fieldPath": "dateAdded",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "VehicleProducts",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "keywords",
+          "arrayConfig": "CONTAINS"
+        },
+        {
+          "fieldPath": "dateAdded",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "VehicleProducts",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "keywords",
+          "arrayConfig": "CONTAINS"
+        },
+        {
+          "fieldPath": "keywords",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "dateAdded",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "VehicleProducts",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "make",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "dateAdded",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "VehicleProducts",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "model",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "dateAdded",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "VehicleProducts",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "referenceNumber",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "dateAdded",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "VehicleProducts",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "referenceNumber",
+          "arrayConfig": "CONTAINS"
+        },
+        {
+          "fieldPath": "referenceNumber",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "dateAdded",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "VehicleProducts",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "stockID",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "dateAdded",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "VehicleProducts",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "stockID",
+          "arrayConfig": "CONTAINS"
+        },
+        {
+          "fieldPath": "stockID",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "dateAdded",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "VehicleProducts",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "stockStatus",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "dateAdded",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "VehicleProducts",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "stockStatus",
+          "arrayConfig": "CONTAINS"
+        },
+        {
+          "fieldPath": "stockStatus",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "dateAdded",
+          "order": "DESCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": [
+    {
+      "collectionGroup": "VehicleProducts",
+      "fieldPath": "dateAdded",
+      "ttl": false,
+      "indexes": [
+        {
+          "order": "ASCENDING",
+          "queryScope": "COLLECTION"
+        },
+        {
+          "order": "DESCENDING",
+          "queryScope": "COLLECTION"
+        },
+        {
+          "arrayConfig": "CONTAINS",
+          "queryScope": "COLLECTION"
+        },
+        {
+          "order": "DESCENDING",
+          "queryScope": "COLLECTION_GROUP"
+        }
+      ]
+    }
+  ]
+}

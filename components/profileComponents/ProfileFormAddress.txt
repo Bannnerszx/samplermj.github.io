@@ -1,0 +1,507 @@
+import {StyleSheet, Text, View, TextInput, Animated, Easing, TouchableOpacity, TouchableWithoutFeedback, FlatList} from 'react-native';
+import React, {useEffect, useState, useRef} from 'react';
+import {FontAwesome , FontAwesome5, Entypo, Ionicons, Feather} from 'react-native-vector-icons';
+import {List} from 'react-native-paper';
+import '../../assets/style.css';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import ProfileForm from './ProfileForm';
+import { Country, State, City}  from 'country-state-city';
+import Select from 'react-select';
+
+const styles = StyleSheet.create({
+    container: {
+      height: 'auto',
+      alignItems: 'center',
+      justifyContent: 'center',
+      
+      flexDirection: 'row',
+      marginTop: 180
+    },
+    containerObjectLeft: {
+      width: 300,
+      height: 'auto',
+      flexDirection: 'column',
+      alignSelf: 'center',
+     
+    },
+    alignColumn: {
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        alignSelf: 'flex-start',
+        paddingLeft: 15
+    },
+    alignColumnText: {
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        alignSelf: 'flex-start',
+        paddingLeft: 10
+    },
+    containerObjectRight: {
+      width: 900,
+      height: '100%',
+  
+    },
+    nameInput: {
+        width: 250,
+        height: 40,
+        borderWidth: 1,
+        borderRadius: 5,
+        backgroundColor: 'white',
+        paddingLeft: 10,
+        paddingRight: 10
+
+    },
+    nameText: {
+        paddingRight: 10
+    },
+    inputZip: {
+        width: 400,
+        height: 45,
+        borderWidth: 1,
+        borderColor: '#aaa',
+        fontSize: 16,
+        padding: 1,
+        borderRadius: 5,
+        paddingLeft: 10,
+        paddingRight: 10
+     },
+     inputSan: {
+        width: 820,
+        height: 45,
+        borderWidth: 1,
+        borderColor: '#aaa',
+        fontSize: 16,
+        padding: 1,
+        borderRadius: 5,
+        paddingLeft: 10,
+        paddingRight: 39,
+        zIndex: -1
+     },
+});
+
+
+const ProfileFormAddress = ({navigation}) => {
+    const [expanded1, setExpanded1] = useState(true);
+    const [expanded2, setExpanded2] = useState(false);
+    const [expanded3, setExpanded3] = useState(false);
+    const [expanded4, setExpanded4] = useState(false);
+  
+    const handleAccordionToggle = (accordionId) => {
+      switch (accordionId) {
+        case '1':
+          setExpanded1(!expanded1);
+          break;
+        case '2':
+          setExpanded2(!expanded2);
+          navigation.navigate('ProfileFormTransaction')
+          break;
+        case '3':
+          setExpanded3(!expanded3);
+          break;
+        case '4':
+          setExpanded4(!expanded4);
+          break;
+        default:
+          break;
+      }
+    };
+    const Stack = createNativeStackNavigator();
+
+    //address
+    const AddressCountryCities = () => {
+        const [selectedCountry, setSelectedCountry] = useState(null);
+        const [selectedState, setSelectedState] = useState('');
+        const [selectedCity, setSelectedCity] = useState('');
+      
+        const handleCountryChange = (country) => {
+          setSelectedCountry(country);
+          setSelectedState('');
+          setSelectedCity('');
+        };
+      
+        const handleStateChange = (state) => {
+          setSelectedState(state);
+          setSelectedCity('');
+        };
+      
+        const handleCityChange = (city) => {
+          setSelectedCity(city);
+        };
+      
+        const countryOptions = Country.getAllCountries().map((country) => ({
+          value: country.isoCode,
+          label: country.name,
+        }));
+      
+        const stateOptions = selectedCountry
+          ? State.getStatesOfCountry(selectedCountry.value).map((state) => ({
+              value: state.isoCode,
+              label: state.name,
+            }))
+          : [];
+      
+        const cityOptions = selectedState
+          ? City.getCitiesOfState(selectedCountry.value, selectedState.value).map((city) => ({
+              value: city.name,
+              label: city.name,
+            }))
+          : [];
+    
+          const labelStyleCountry = {
+            position: 'absolute',
+            top: selectedCountry ? -10 : '17%',
+            left: 7,
+            fontSize: selectedCountry ? 12 : 0,
+            color: selectedCountry ? '#777' : '#000',
+            transition: '0.2s',
+            background: '#fff',
+            paddingHorizontal:5 ,
+            zIndex: selectedCountry ? 2 : 1,
+            backgroundColor: '#fff',
+          };
+          const labelStyleState = {
+            position: 'absolute',
+            top: selectedState ? -10 : '17%',
+            left: '51.9%',
+            fontSize: selectedState ? 12 : 0,
+            color: selectedState ? '#777' : '#000',
+            transition: '0.2s',
+            background: '#fff',
+            paddingHorizontal:5 ,
+            backgroundColor: selectedState ? '#fff' : '#fff'
+          };
+          const labelStyleCity = {
+            position: 'absolute',
+            top: selectedCity ? 11 : '77%',
+            left: 7,
+            fontSize: selectedCity ? 12 : 0,
+            color: selectedCity ? '#777' : '#000',
+            transition: '0.2s',
+            paddingHorizontal:5 ,
+            background: '#fff',
+            backgroundColor: selectedCity ? '#fff' : '#fff',
+            zIndex: 1
+          };
+          const selectStyleCountry ={
+            zIndex: 1,
+          };
+
+          return(
+        
+            <View style={{ }}>
+            <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 20, zIndex: 2, marginLeft: 45}}>
+            <Text style={labelStyleCountry}>Country</Text>
+            
+            <Select
+                placeholder= "Country"
+                isClearable
+                value={selectedCountry}
+                onChange={handleCountryChange}
+                options={countryOptions}
+                styles={{control: (provided) => ({
+                ...provided,
+                ...selectStyleCountry,
+                width: 400,
+                borderRadius: 5,
+                marginRight: 20,
+                fontFamily: 'Arial'
+              }),}}
+              theme={(theme) => ({
+          ...theme,
+          borderRadius: 0,
+          colors: {
+            ...theme.colors,
+            primary: 'black',
+          },
+        })}
+            />
+            <Select
+                placeholder= "State"
+                isClearable
+                value={selectedState}
+                onChange={handleStateChange}
+                options={stateOptions}
+                isDisabled={!selectedCountry}
+                styles={{control: (provided) => ({
+                ...provided,
+                width: 400,
+                borderRadius: 5,
+                backgroundColor: 'f5f5f5',
+                fontFamily: 'Arial'
+              }),}}
+              theme={(theme) => ({
+              ...theme,
+              borderRadius: 0,
+              colors: {
+              ...theme.colors,
+              primary: 'black',
+                },
+             })}
+            />
+            <Text style={labelStyleState}>State</Text>
+            </View>
+    
+            <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 20, zIndex: 1, marginLeft: 45 }}>
+            <Text style={labelStyleCity}>City</Text>
+            <Select
+            placeholder= "City"
+            isClearable
+            value={selectedCity}
+            onChange={handleCityChange}
+            options={cityOptions}
+            isDisabled={!selectedState}
+            styles={{control: (provided) => ({
+                ...provided,
+                width: 400,
+                borderRadius: 5,
+                backgroundColor: 'f5f5f5',
+                marginTop: 20,
+                marginRight: 20,
+                fontFamily: 'Arial'
+              }),}}
+              theme={(theme) => ({
+              ...theme,
+              borderRadius: 0,
+              colors: {
+              ...theme.colors,
+              primary: 'black',
+                },
+             })}
+          />
+            <ZipCode />
+            </View>
+            
+            <StreetAnimation />
+            <View style={{marginLeft: '27%', marginTop: 30}}>
+                <button className="login">SAVE CHANGES</button>
+            </View>
+        </View>
+       
+            );
+
+        }
+    
+    //address ends here
+    
+    //zip code
+    const ZipCode = () =>{
+        const inputRef = useRef(null);
+        const onPress = () => {
+        inputRef.current.focus();
+        };
+        
+            const [text, setText] = useState('');
+            const [isFocused, setIsFocused] = useState(false);
+            const animatedValue = useState(new Animated.Value(text ? 1 : 0))[0];
+          
+            const handleFocus = () => {
+              setIsFocused(true);
+              Animated.timing(animatedValue, {
+                toValue: 1,
+                duration: 170,
+                useNativeDriver: false,
+              }).start();
+            };
+          
+            const handleBlur = () => {
+              setIsFocused(false);
+              Animated.timing(animatedValue, {
+                toValue: text ? 1 : 0,
+                duration: 170,
+                useNativeDriver: false,
+              }).start();
+            };
+          
+            const labelStyle = {
+              paddingLeft: 4,
+              paddingRight: 4,
+              backgroundColor: '#fff',
+              position: 'absolute',
+              left: animatedValue.interpolate({
+                  inputRange: [0 , 1],
+                  outputRange: [11 , 9]
+              }),
+              top: animatedValue.interpolate({
+                inputRange: [0, 1],
+                outputRange: [31, 9],
+              }),
+              fontSize: animatedValue.interpolate({
+                inputRange: [0, 1],
+                outputRange: [16, 14],
+              }),
+              color: animatedValue.interpolate({
+                inputRange: [0, 1],
+                outputRange: ['#aaa', '#aaa'],
+              }),
+            };
+            
+        
+        //
+        return(
+            <View style={{justifyContent: 'center' , alignItems: 'center', paddingTop: 20}}>
+                 <TextInput
+                ref={inputRef}
+            style={[styles.inputZip]}
+            value={text}
+            onChangeText={setText}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+          />
+          <TouchableWithoutFeedback onPress={onPress}>
+          <Animated.Text style={labelStyle}>ZIP CODE / Postal Code</Animated.Text>
+          </TouchableWithoutFeedback>
+            </View>
+        );
+        };
+    //zip code ends here
+
+    //street animation
+    const StreetAnimation = () => {
+        const [text, setText] = useState('');
+            const [isFocused, setIsFocused] = useState(false);
+            const animatedValue = useState(new Animated.Value(text ? 1 : 0))[0];
+            const inputRef = useRef(null);
+            const onPress = () => {
+                inputRef.current.focus();
+            };
+            const handleFocus = () => {
+                setIsFocused(true);
+                Animated.timing(animatedValue, {
+                    toValue: 1,
+                    duration: 170,
+                    useNativeDriver: false,
+                }).start();
+            };
+    
+            const handleBlur = () => {
+                setIsFocused(false);
+                Animated.timing(animatedValue, {
+                    toValue: text ? 1 : 0,
+                    duration: 170,
+                    useNativeDriver: false,
+                }).start();
+            };
+    
+            const labelStyle = {
+                paddingLeft: 4,
+                paddingRight: 4,
+                backgroundColor: '#fff',
+                position: 'absolute',
+                left: animatedValue.interpolate({
+                    inputRange: [0 , 1],
+                    outputRange: [11 , 8]
+                }),
+                top: animatedValue.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: [11, -11],
+                }),
+                fontSize: animatedValue.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: [16, 14],
+                }),
+                color: animatedValue.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: ['#aaa', '#aaa'],
+                }),
+              };
+        return(
+            <View style={{alignSelf: 'flex-start' , marginLeft: 45, marginTop: 40, zIndex: -1}}>
+                    <TextInput
+                        ref={inputRef}
+                        style={[styles.inputSan]}
+                        value={text}
+                        onChangeText={setText}
+                        onFocus={handleFocus}
+                        onBlur={handleBlur}
+                    />
+                    <TouchableWithoutFeedback onPress={onPress}>
+                        <Animated.Text style={labelStyle}>Street</Animated.Text>
+                    </TouchableWithoutFeedback>
+                </View>
+        );
+    };
+    //street animation ends here
+    return(
+        <View style={styles.container}>
+            <View style={styles.containerObjectLeft}>
+            <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', paddingTop: 15, marginRight: 50 }}>
+            <FontAwesome name="user-circle" size={35} color="#7b9cff" style={{paddingRight: 10 ,paddingBottom: 10}}/>
+            <Text style={{width: 100, fontSize: 20, marginLeft: 25}}>Ferdinand Magellan y Llonte Salvadore Refloranso </Text>
+            </View>
+            <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                <FontAwesome name="pencil" size={20} color="#7b9cff" style={{paddingRight: 10, marginLeft: 15 }}/>
+                <Text>Edit Profile</Text>
+                </View>
+            
+            {/* MY ACCOUNT */}
+            <List.Accordion
+            id="1"
+            style={{ justifyContent: 'center', alignItems: 'center', backgroundColor: 'white'}}
+                    title="My Account"
+                    titleStyle={{  alignSelf: 'flex-start',backgroundColor: 'white', marginRight: 19}}
+                    expanded={expanded1}
+                    onPress={() => handleAccordionToggle('1')}
+                    left={() => <FontAwesome name="user" size={35} color="#7b9cff" style={{paddingRight: 10,}}/>}
+                    right={() => false}
+            >
+      <List.Item title="Profile" onPress={() => navigation.navigate('Profile')} titleStyle={{ marginLeft: 70 }}/>
+      <List.Item title="Address"   titleStyle={{ marginLeft: 70, color: '#8050A4' }}/>
+      <List.Item title="Password"  onPress={() => navigation.navigate('ProfilePassword')} titleStyle={{ marginLeft: 70 }} />
+    </List.Accordion>
+    {/* Transaction */}
+    <List.Accordion
+                    id="2"
+                    style={{ justifyContent: 'center', alignItems: 'center', backgroundColor: 'white' }}
+                    titleStyle={{  backgroundColor: 'white', alignSelf: 'flex-start', marginRight: 19}}
+                    title="Transaction"
+                    expanded={expanded2}
+                   onPress={() => navigation.navigate('ProfileFormTransaction')}
+                    left={() => <FontAwesome5 name="store" size={30} color="#7b9cff" style={{paddingRight: 10,paddingBottom: 10}}/>}
+                    right={() => false}
+            >
+     
+    </List.Accordion>
+    <List.Accordion
+                    id="3"
+                    style={{ justifyContent: 'center', alignItems: 'center', backgroundColor: 'white'}}
+                    titleStyle={{ alignSelf: 'flex-start', marginRight: 4 }}
+                    title="Inquiries Chat"
+                    expanded={expanded3}
+                    onPress={() => handleAccordionToggle('3')}
+                    left={() => <Entypo name="chat" size={30} color="#7b9cff" style={{paddingRight: 10,paddingBottom: 10}}/>}
+                    right={() => false}
+            >
+     
+    </List.Accordion>
+    <List.Accordion
+                    id="4"
+            style={{ justifyContent: 'center', alignItems: 'center', backgroundColor: 'white', right: -2 }}
+                    titleStyle={{ alignSelf: 'flex-start', backgroundColor: 'white', marginRight: 32}}
+                    title="Favorites"
+                    expanded={expanded4}
+                    onPress={() => navigation.navigate('ProfileFormFavorite')}
+                    left={() => <FontAwesome name="heart-o" size={30} color="#7b9cff" style={{paddingRight: 15,paddingBottom: 10}}/>}
+                    right={() => false}
+            >
+     
+    </List.Accordion>
+    
+            </View>
+            <View style={styles.containerObjectRight}>
+            <View style={{padding: 20}}>
+                <Text style={{paddingBottom: 5, fontWeight: 500, fontSize: 25}}>Address</Text>
+                <Text style={{paddingBottom: 20, fontWeight: 400, fontSize: 15}}>Manage your address</Text>
+                <View style={{borderBottomWidth: 2, justifyContent: 'center', alignItems: 'center'}}/>
+                </View>
+                <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                    <AddressCountryCities />
+                </View>
+            </View>
+        </View>
+    )
+}
+
+export default ProfileFormAddress;

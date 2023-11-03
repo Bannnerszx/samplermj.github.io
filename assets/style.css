@@ -1,0 +1,109 @@
+.login:hover{
+    transform: translateY(2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #627dcc;
+}
+.login {
+    background-color: #7b9cff;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    text-decoration: none;
+    display: flex;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 90%;
+    height: 45px;
+    border-radius: 5px;
+    z-index: -1;
+  }
+  input{
+    height: 30px;
+  }
+  
+  .react-tel-input .form-control{
+    width: 425px !important;
+   border-color: #aaa !important;
+  }
+  .form-control:focus{
+    border-color:#7b9cff !important;
+    border-width: 2px !important;
+  }
+  .modal:hover{
+    transform: translateY(2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #627dcc;
+}
+.modal {
+    background-color: #5c7ad4;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    display: flex;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 160px;
+    height: 25px;
+    border-radius: 25px;
+
+ 
+  }
+.sellerbutton{
+  background-color: #7b9cff;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  display: flex;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 150px;
+  height: 25px;
+  border-radius: 25px;
+  z-index: -1; 
+  overflow: hidden;
+  white-space: nowrap;
+}
+.sellerbutton:hover{
+  transform: translateY(2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #627dcc ; 
+}
+
+.react-tel-input .form-control{
+  width: 90% !important;
+  justify-content: center !important;
+  height: 40px !important;
+
+}
+.react-tel-input .flag-dropdown{
+  left: 50 !important;
+}
+.react-tel-input .country-list{
+  left: 50 !important;
+}
+.react-tel-input {
+  width: 100% !important;
+  margin-left: 10%;
+}
+.react-tel-input {
+  .form-control {
+    & + div:before {
+      content: '' !important;
+    }
+  }
+}
